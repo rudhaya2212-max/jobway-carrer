@@ -68,3 +68,4 @@ describe('Security & Compliance Audit', () => {
     scanFiles(frontendSrcDir);
   });
 });
+

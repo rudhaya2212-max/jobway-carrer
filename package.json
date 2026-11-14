@@ -9,6 +9,7 @@
     "test:agents": "node --test tests/ai-agents.test.js",
     "test:security": "node --test tests/security-audit.test.js",
     "test:all": "node --test tests/**/*.test.js",
+    "coverage": "node --test --experimental-test-coverage tests/**/*.test.js",
     "start": "node backend/server.js",
     "build": "cd frontend && npm run build",
     "lint": "cd frontend && npx tsc --noEmit"
@@ -23,3 +24,4 @@
   "author": "JOB WAY AI Team",
   "license": "MIT"
 }
+

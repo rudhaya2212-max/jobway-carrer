@@ -15,7 +15,7 @@ function dispatchRequest(method, path, body = null, headers = {}) {
   return new Promise((resolve) => {
     // Create mock readable request stream
     const req = new Readable({
-      read() {}
+      read() { }
     });
     req.method = method;
     req.url = path;
