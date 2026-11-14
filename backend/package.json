@@ -1,0 +1,11 @@
+{
+  "name": "job-way-backend",
+  "version": "1.0.0",
+  "description": "JOB WAY Multi-Agent AI Backend Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
+
