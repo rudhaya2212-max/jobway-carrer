@@ -151,3 +151,4 @@ describe('End-to-End Hackathon Demonstration Workflow (10-Step Journey)', () => 
     assert.ok(targetCareer.requiredSkills.length > 0);
   });
 });
+

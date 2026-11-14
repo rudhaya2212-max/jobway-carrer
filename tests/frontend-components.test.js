@@ -122,3 +122,4 @@ describe('Frontend Views, Catalogs & UI State', () => {
     });
   });
 });
+
