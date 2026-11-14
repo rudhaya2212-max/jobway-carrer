@@ -107,3 +107,31 @@ CREATE INDEX IF NOT EXISTS idx_roadmaps_profile ON user_roadmaps(profile_id);
 CREATE INDEX IF NOT EXISTS idx_attempts_profile ON coding_attempts(profile_id);
 CREATE INDEX IF NOT EXISTS idx_events_profile ON agent_events(profile_id);
 
+-- Enable Row Level Security (RLS) on all user data tables
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE skills ENABLE ROW LEVEL SECURITY;
+ALTER TABLE user_roadmaps ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sprints ENABLE ROW LEVEL SECURITY;
+ALTER TABLE coding_attempts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE agent_events ENABLE ROW LEVEL SECURITY;
+
+-- Standard RLS Policies (User Data Isolation)
+CREATE POLICY "Users can only access their own profile" ON profiles
+    FOR ALL USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can only access their own skills" ON skills
+    FOR ALL USING (profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()));
+
+CREATE POLICY "Users can only access their own roadmaps" ON user_roadmaps
+    FOR ALL USING (profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()));
+
+CREATE POLICY "Users can only access their own sprints" ON sprints
+    FOR ALL USING (profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()));
+
+CREATE POLICY "Users can only access their own attempts" ON coding_attempts
+    FOR ALL USING (profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()));
+
+CREATE POLICY "Users can only access their own agent events" ON agent_events
+    FOR ALL USING (profile_id IN (SELECT id FROM profiles WHERE user_id = auth.uid()));
+
+

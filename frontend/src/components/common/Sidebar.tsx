@@ -50,7 +50,8 @@ export const Sidebar: React.FC = () => {
       <div className="p-5 border-b border-neutral-200/70">
         <button 
           onClick={() => setActiveTab('dashboard')}
-          className="flex items-center gap-3 text-left w-full group"
+          aria-label="Job Way AI Home - Navigate to Dashboard"
+          className="flex items-center gap-3 text-left w-full group focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none rounded-xl"
         >
           <div className="h-9 w-9 rounded-xl bg-neutral-950 flex items-center justify-center text-white shadow-subtle group-hover:bg-neutral-800 transition-colors">
             <Compass className="h-5 w-5 stroke-[1.8]" />
@@ -72,7 +73,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Main Navigation List */}
-      <nav className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-none">
+      <nav aria-label="Main Navigation" className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-none">
         {navItems.map(item => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
@@ -80,7 +81,8 @@ export const Sidebar: React.FC = () => {
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
+              aria-current={isActive ? 'page' : undefined}
+              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none ${
                 isActive
                   ? 'bg-neutral-900 text-white font-semibold shadow-subtle'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
@@ -99,7 +101,8 @@ export const Sidebar: React.FC = () => {
         {/* Autonomous Agents Status Button */}
         <button
           onClick={() => setIsAgentDrawerOpen(true)}
-          className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white border border-neutral-200 text-neutral-800 hover:bg-neutral-50 transition-colors shadow-subtle text-xs"
+          aria-label="Open AI Agents Activity Drawer (4 active agents)"
+          className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white border border-neutral-200 text-neutral-800 hover:bg-neutral-50 transition-colors shadow-subtle text-xs focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none"
         >
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
@@ -118,18 +121,20 @@ export const Sidebar: React.FC = () => {
         <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-neutral-200/70">
           <button
             onClick={() => setActiveTab('passport')}
-            className="flex items-center gap-2.5 text-left truncate flex-1"
+            aria-label={`View ${user.name}'s profile and skill passport`}
+            className="flex items-center gap-2.5 text-left truncate flex-1 focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none rounded-lg"
           >
             <img
               src={user.avatarUrl}
-              alt={user.name}
+              alt=""
+              aria-hidden="true"
               className="h-7 w-7 rounded-full object-cover border border-neutral-200"
             />
             <div className="truncate">
               <span className="block text-xs font-bold text-neutral-900 truncate">
                 {user.name}
               </span>
-              <span className="block text-[10px] text-neutral-400 truncate">
+              <span className="block text-[10px] text-neutral-500 truncate">
                 {user.currentRole}
               </span>
             </div>
@@ -141,7 +146,8 @@ export const Sidebar: React.FC = () => {
               setIsAuthModalOpen(true);
             }}
             title="Log in / switch account"
-            className="p-1.5 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors"
+            aria-label="Log in or switch account"
+            className="p-1.5 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none"
           >
             <LogOut className="h-3.5 w-3.5 stroke-[1.8]" />
           </button>

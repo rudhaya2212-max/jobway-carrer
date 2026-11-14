@@ -29,13 +29,19 @@ export const AuthModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/40 backdrop-blur-sm animate-fade-in">
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="auth-modal-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/40 backdrop-blur-sm animate-fade-in"
+    >
       <div className="relative w-full max-w-md bg-white rounded-3xl border border-neutral-200/80 shadow-dropdown p-7 overflow-hidden">
         
         {/* Close Button */}
         <button
           onClick={() => setIsAuthModalOpen(false)}
-          className="absolute top-5 right-5 h-8 w-8 flex items-center justify-center rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+          aria-label="Close authentication dialog"
+          className="absolute top-5 right-5 h-8 w-8 flex items-center justify-center rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none"
         >
           <X className="h-4 w-4" />
         </button>
@@ -45,7 +51,7 @@ export const AuthModal: React.FC = () => {
           <div className="h-12 w-12 rounded-2xl bg-neutral-950 flex items-center justify-center text-white mb-3 shadow-subtle">
             <Compass className="h-6 w-6 stroke-[1.8]" />
           </div>
-          <h2 className="text-xl font-bold tracking-tight text-neutral-900">
+          <h2 id="auth-modal-title" className="text-xl font-bold tracking-tight text-neutral-900">
             {authMode === 'login' ? 'Log in to Job Way' : 'Create your account'}
           </h2>
           <p className="text-xs text-neutral-500 mt-1 max-w-xs">

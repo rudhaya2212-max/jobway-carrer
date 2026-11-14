@@ -45,7 +45,12 @@ export const AgentCollaborationDrawer: React.FC = () => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-neutral-900/40 backdrop-blur-sm transition-opacity">
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="agent-drawer-title"
+      className="fixed inset-0 z-50 overflow-hidden bg-neutral-900/40 backdrop-blur-sm transition-opacity"
+    >
       <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
         <div className="w-screen max-w-md bg-white border-l border-neutral-200/80 shadow-dropdown flex flex-col">
 
@@ -56,18 +61,19 @@ export const AgentCollaborationDrawer: React.FC = () => {
                 <Bot className="h-4 w-4 stroke-[1.8]" />
               </div>
               <div>
-                <h2 className="text-sm font-bold text-neutral-900 flex items-center gap-1.5">
+                <h2 id="agent-drawer-title" className="text-sm font-bold text-neutral-900 flex items-center gap-1.5">
                   AI Multi-Agent Collaboration Log
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                 </h2>
-                <p className="text-[11px] text-neutral-400">
+                <p className="text-[11px] text-neutral-500">
                   Shared learner context & event-driven coordination
                 </p>
               </div>
             </div>
             <button
               onClick={() => setIsAgentDrawerOpen(false)}
-              className="text-neutral-400 hover:text-neutral-900 p-1"
+              aria-label="Close activity drawer"
+              className="text-neutral-400 hover:text-neutral-900 p-1 focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none rounded-lg"
             >
               <X className="h-4 w-4" />
             </button>

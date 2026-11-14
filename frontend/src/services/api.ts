@@ -73,6 +73,21 @@ export const apiClient = {
     } catch (err) {
       return [];
     }
+  },
+
+  // Secure Code Evaluation & Hidden Test Protection
+  async runCode(challengeId: string, code: string, language: string) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/code/run`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ challengeId, code, language })
+      });
+      if (!res.ok) throw new Error('Code evaluation API failed');
+      return await res.json();
+    } catch (err) {
+      return null; // Fallback to client verification
+    }
   }
 };
 

@@ -1,0 +1,25 @@
+{
+  "name": "job-way-ai-platform",
+  "version": "2.4.0",
+  "private": true,
+  "description": "JOB WAY AI - Autonomous Multi-Agent Career & Adaptive Learning Platform",
+  "scripts": {
+    "test": "node --test tests/**/*.test.js",
+    "test:backend": "node --test tests/backend-api.test.js",
+    "test:agents": "node --test tests/ai-agents.test.js",
+    "test:security": "node --test tests/security-audit.test.js",
+    "test:all": "node --test tests/**/*.test.js",
+    "start": "node backend/server.js",
+    "build": "cd frontend && npm run build",
+    "lint": "cd frontend && npx tsc --noEmit"
+  },
+  "keywords": [
+    "career",
+    "ai-agents",
+    "socratic-mentor",
+    "adaptive-learning",
+    "jobway"
+  ],
+  "author": "JOB WAY AI Team",
+  "license": "MIT"
+}

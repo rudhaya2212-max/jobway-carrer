@@ -90,7 +90,12 @@ export const OnboardingModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/40 backdrop-blur-sm">
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="onboarding-modal-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/40 backdrop-blur-sm"
+    >
       <div className="relative w-full max-w-2xl bg-white rounded-3xl border border-neutral-200/80 shadow-dropdown overflow-hidden flex flex-col max-h-[90vh]">
 
         {/* Header */}
@@ -100,7 +105,7 @@ export const OnboardingModal: React.FC = () => {
               <Upload className="h-4 w-4 stroke-[1.8]" />
             </div>
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-neutral-900">
+              <h2 id="onboarding-modal-title" className="text-sm sm:text-base font-bold text-neutral-900">
                 Import Profile & Ingest Skills (Agent 1)
               </h2>
               <p className="text-xs text-neutral-500">
@@ -110,7 +115,8 @@ export const OnboardingModal: React.FC = () => {
           </div>
           <button
             onClick={() => setIsOnboardingModalOpen(false)}
-            className="text-neutral-400 hover:text-neutral-900 p-1"
+            aria-label="Close dialog"
+            className="text-neutral-400 hover:text-neutral-900 p-1 focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:outline-none rounded-lg"
           >
             <X className="h-4 w-4" />
           </button>
