@@ -11,7 +11,7 @@
     "test:all": "node --test tests/**/*.test.js",
     "coverage": "node --test --experimental-test-coverage tests/**/*.test.js",
     "start": "node backend/server.js",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "lint": "cd frontend && npx tsc --noEmit"
   },
   "keywords": [
